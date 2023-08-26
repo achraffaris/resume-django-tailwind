@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-100 font-['Poppins']">
+    <div class="flex flex-row justify-center">
+        <div class="container mx-auto py-8">
+            <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+                <div class="col-span-4 sm:col-span-3">
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <div class="flex flex-col items-center">
+                            <img src="https://cdn.intra.42.fr/users/1d84be2e29908eb902b19e2c29e664b5/afaris.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+    
+                            </img>
+                            <h1 class="text-xl font-bold">Achraf Faris</h1>
+                            <p class="text-gray-600">Software Developer</p>
+                            <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                                <a href="https://www.linkedin.com/in/achraffaris/" target="_blank" class="bg-teal-800 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
+                                <a href="/" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
+                            </div>
+                        </div>
+                        <hr class="my-6 border-t border-gray-300">
+                        <div class="flex flex-col">
+                            <span class="text-gray-600 uppercase font-bold tracking-wider mb-2">Skills</span>
+                            <ul>
+                                <li class="mb-2">C++</li>
+                                {% for skill in data.skills.all %}
+                                    <li class="mb-2">{{skill.name}}</li>
+                                {% endfor %}
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-4 sm:col-span-9">
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <h2 class="text-xl font-bold mb-4">About Me</h2>
+                        <p class="text-gray-700">
+                            {{data.about}}
+                        </p>
+    
+                        <h2 class="text-xl font-bold mt-6 mb-4">Experience</h2>
+                        {% for exp in data.experience.all %}
+                            <div class="mb-6">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600 font-bold">{{exp.position}}</span>
+                                    <p>
+                                        <span class="text-gray-600 mr-2">at {{exp.company_name}}</span>
+                                        <span class="text-gray-600">
+                                            {{exp.starting_year}} - {{exp.ending_year}}
+                                        </span>
+                                    </p>
+                                </div>
+                                <p class="mt-2">
+                                    {{exp.description}}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
